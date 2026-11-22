@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment: { POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, POSTGRES_DB: joineazy }
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U postgres"], interval: 5s, retries: 10 }
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/joineazy
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-me}
+      ADMIN_SIGNUP_CODE: ${ADMIN_SIGNUP_CODE:-prof-secret}
+    depends_on: { db: { condition: service_healthy } }
+    ports: ["5000:5000"]
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["3000:80"]
+volumes: { pgdata: {} }
