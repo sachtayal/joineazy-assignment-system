@@ -5,7 +5,7 @@ Role-based web app where students form groups and confirm OneDrive submissions, 
 **Stack:** React (Vite) + Tailwind + Recharts · Node.js + Express · PostgreSQL · JWT · Docker
 ## Live Demo
 
-- **Frontend:** https://joineazy-assignment-system-kt2f1cyod-sach15.vercel.app
+- **Frontend:** https://joineazy-assignment-system-rho.vercel.app
 - **Backend:** https://joineazy-assignment-system.onrender.com
 - **GitHub Repository:** https://github.com/sachtayal/joineazy-assignment-system
 
