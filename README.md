@@ -3,6 +3,13 @@
 Role-based web app where students form groups and confirm OneDrive submissions, and professors post assignments and track progress.
 
 **Stack:** React (Vite) + Tailwind + Recharts · Node.js + Express · PostgreSQL · JWT · Docker
+## Live Demo
+
+- **Frontend:** https://joineazy-assignment-system-kt2f1cyod-sach15.vercel.app
+- **Backend:** https://joineazy-assignment-system.onrender.com
+- **GitHub Repository:** https://github.com/sachtayal/joineazy-assignment-system
+
+The application has been deployed and tested with student and professor login, group creation, assignment management, submission confirmation, and progress tracking.
 
 ## Features
 - **Student:** register/login, create a group, add/remove members by email or ID, view assignments and OneDrive links, two-step confirmation ("Yes, I have submitted" → "Confirm submission"), group progress bar, per-assignment badges.
@@ -113,4 +120,4 @@ React SPA ──fetch + JWT──▶ Express (routes → middleware auth/role �
 - **A student belongs to one group** (`UNIQUE(user_id)` on `group_members`), which keeps progress unambiguous.
 - **Server-side authorization:** only members confirm for their group, only for assignments targeted at it; only admins reach `/admin/*`; professor registration needs an access code.
 - **Two-step confirmation** is enforced in the UI and the API requires `confirm: true`.
-- **Deployment:** three containers via Compose. For hosting, deploy backend + Postgres (Render/Railway), build the frontend with `VITE_API_URL` pointing at the API, and set `CORS_ORIGIN`.
+- **Deployment:** Frontend hosted on Vercel, backend hosted on Render, and PostgreSQL hosted on Render. The frontend uses `VITE_API_URL` to connect to the backend API.
